@@ -7,15 +7,15 @@
  */
 int main(void)
 {
-    char lowercase, uppercase;
+	char lowercase, uppercase;
 
-    for (lowercase = 'a'; lowercase <= 'z'; lowercase++)
-        putchar(lowercase);
+	for (lowercase = 'a'; lowercase <= 'z'; lowercase++)
+		putchar(lowercase);
 
-    for (uppercase = 'A'; uppercase <= 'Z'; uppercase++)
-        putchar(uppercase);
+	for (uppercase = 'A'; uppercase <= 'Z'; uppercase++)
+		putchar(uppercase);
 
-    putchar('\n');
+	putchar('\n');
 
-    return (0);
+	return (0);
 }
