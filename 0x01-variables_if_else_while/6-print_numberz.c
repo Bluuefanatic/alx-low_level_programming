@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <unistd.h>
 
 /**
  * main - Entry point
@@ -7,18 +7,17 @@
  *
  * Return: Always 0 (Success}
  */
+
 int main(void)
 {
-    int digit;
+    int i;
 
-    for (digit = '0'; digit <= '9'; digit++)
+    i = 48;
+    while (i <= 57)
     {
-        putchar(digit);
-        if (digit != '9')
-        {
-            putchar('\n');
-        }
+        write(1, &i, 1);
+        i++;
     }
 
-    return 0;
+    return (0);
 }
