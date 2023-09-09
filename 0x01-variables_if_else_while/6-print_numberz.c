@@ -8,6 +8,8 @@
  * Return: Always 0 (Success}
  */
 
+#include <unistd.h>
+
 int main(void)
 {
     int i;
@@ -18,6 +20,8 @@ int main(void)
         write(1, &i, 1);
         i++;
     }
+
+    write(1, "\n", 1);
 
     return (0);
 }
