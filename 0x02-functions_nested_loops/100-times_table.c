@@ -1,65 +1,39 @@
 #include "main.h"
 
 /**
- * print_row - Prints a single row of the times table.
- * @n: The number for which times table row should be printed
- * @row: The row number to print
- */
-void print_row(int n, int row)
-{
-    int j, result;
-
-    for (j = 0; j <= n; j++)
-    {
-        result = row * j;
-
-        if (j == 0)
-        {
-            _putchar('0');
-        }
-        else
-        {
-            _putchar(',');
-            _putchar(' ');
-
-            if (result < 10)
-                _putchar(' ');
-            if (result < 100)
-                _putchar(' ');
-        }
-
-        if (result < 10)
-            _putchar(' ');
-
-        if (result >= 100)
-        {
-            _putchar((result / 100) + '0');
-            _putchar(((result / 10) % 10) + '0');
-        }
-        else if (result >= 10)
-        {
-            _putchar((result / 10) + '0');
-        }
-
-        _putchar((result % 10) + '0');
-    }
-
-    _putchar('\n');
-}
-
-/**
- * print_times_table - Prints the n times table, starting with 0.
- * @n: The number for which times table should be printed
+ * print_times_table - prints the n times table, starting with 0
+ * @n: the number of times to print the table
+ *
+ * Return: void
  */
 void print_times_table(int n)
 {
-    int i;
+	int i, j;
 
-    if (n > 15 || n < 0)
-        return;
+	if (n < 0 || n > 15)
+		return;
 
-    for (i = 0; i <= n; i++)
-    {
-        print_row(n, i);
-    }
+	for (i = 0; i <= n; i++)
+	{
+		for (j = 0; j <= n; j++)
+		{
+			int result = i * j;
+			int tens = result / 10;
+
+			if (j != 0)
+			{
+				_putchar(',');
+				_putchar(' ');
+			}
+
+			if (result < 10 && j != 0)
+				_putchar(' ');
+
+			if (tens != 0)
+				_putchar(tens + '0');
+
+			_putchar((result % 10) + '0');
+		}
+		_putchar('\n');
+	}
 }
