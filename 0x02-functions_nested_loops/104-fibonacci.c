@@ -1,4 +1,14 @@
-#include "main.h"
+#include <unistd.h>
+
+void print_char(char c) {
+    __asm__ ("movq $1, %%rax\n\t" 
+             "movq $1, %%rdi\n\t"
+             "syscall\n\t" 
+             :
+             : "S"(&c)
+             : "rax", "rdi", "cc", "memory"
+            );
+}
 
 /**
  * print_char - Writes a character to stdout
