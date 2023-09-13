@@ -1,24 +1,29 @@
 #include "main.h"
 
 /**
- * sum_of_multiples - Calculates the sum of multiples of 3 or 5 below 1024.
+ * is_multiple - Checks if a number is a multiple of 3 or 5
+ * @n: The number to check
  *
- * This function returns the sum of multiples of 3 or 5 below 1024.
- *
- * Return: The sum of multiples of 3 or 5.
+ * Return: 1 if the number is a multiple, 0 otherwise
  */
-#include "main.h"
+int is_multiple(int n) {
+    return (n % 3 == 0 || n % 5 == 0);
+}
 
-int sum_of_multiples(void)
-{
+/**
+ * sum_multiples - Sums all the multiples of 3 or 5 below 1024
+ *
+ * Return: The sum of the multiples
+ */
+int sum_multiples() {
     int sum = 0;
-    int i; // Declare i here
+    int i;
 
     for (i = 0; i < 1024; i++) {
-        if (i % 3 == 0 || i % 5 == 0) {
+        if (is_multiple(i)) {
             sum += i;
         }
     }
 
-    return (sum);
+    return sum;
 }
