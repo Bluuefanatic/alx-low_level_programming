@@ -1,5 +1,3 @@
-/* main.c */
-
 #include "main.h"
 #include <stdio.h> /* Include the necessary header file */
 
