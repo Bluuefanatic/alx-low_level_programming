@@ -1,25 +1,32 @@
-#include "main.h"
+#include <stdio.h>
 
 /**
- * find_sum_of_even_fibonacci - Find the sum of even-valued terms in the Fibonacci sequence
- * up to a given limit.
- * @limit: The upper limit for Fibonacci numbers.
- *
- * Return: The sum of even-valued terms.
+ * print_sum_of_even_fibonacci - Finds and prints the sum of even Fibonacci terms
  */
-unsigned long find_sum_of_even_fibonacci(unsigned long limit)
+void print_sum_of_even_fibonacci(void)
 {
-    unsigned long fib1 = 1, fib2 = 2, next, sum = 0;
+	unsigned long int first = 1, second = 2, next, sum = 0;
 
-    while (fib2 <= limit)
-    {
-        if (fib2 % 2 == 0)
-            sum += fib2;
+	while (second <= 4000000)
+	{
+		if (second % 2 == 0)
+			sum += second;
 
-        next = fib1 + fib2;
-        fib1 = fib2;
-        fib2 = next;
-    }
+		next = first + second;
+		first = second;
+		second = next;
+	}
 
-    return sum;
+	printf("%lu\n", sum);
+}
+
+/**
+ * main - Entry point
+ *
+ * Return: Always 0
+ */
+int main(void)
+{
+	print_sum_of_even_fibonacci();
+	return (0);
 }
