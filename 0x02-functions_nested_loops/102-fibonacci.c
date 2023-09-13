@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h> // Include the necessary header file
 
 /**
  * print_fibonacci - Print the first n Fibonacci numbers
@@ -9,20 +10,20 @@
  */
 void print_fibonacci(int n)
 {
-	int i;
-	unsigned long long fib1 = 1, fib2 = 2, next;
+    int i;
+    unsigned long fib1 = 1, fib2 = 2, next;
 
-	for (i = 0; i < n; i++)
-	{
-		if (i != n - 1)
-			printf("%llu, ");
-		else
-			printf("%llu");
+    for (i = 0; i < n; i++)
+    {
+        if (i != n - 1)
+            printf("%lu, ", fib1); // Use %lu for unsigned long
+        else
+            printf("%lu", fib1); // Use %lu for unsigned long
 
-		next = fib1 + fib2;
-		fib1 = fib2;
-		fib2 = next;
-	}
+        next = fib1 + fib2;
+        fib1 = fib2;
+        fib2 = next;
+    }
 
-	printf("\n");
+    printf("\n");
 }
