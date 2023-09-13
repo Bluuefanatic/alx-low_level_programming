@@ -7,15 +7,18 @@
  *
  * Return: The sum of multiples of 3 or 5.
  */
+#include "main.h"
+
 int sum_of_multiples(void)
 {
-	int sum = 0;
+    int sum = 0;
+    int i; // Declare i here
 
-	for (int i = 0; i < 1024; i++)
-	{
-		if (i % 3 == 0 || i % 5 == 0)
-			sum += i;
-	}
+    for (i = 0; i < 1024; i++) {
+        if (i % 3 == 0 || i % 5 == 0) {
+            sum += i;
+        }
+    }
 
-	return (sum);
+    return (sum);
 }
