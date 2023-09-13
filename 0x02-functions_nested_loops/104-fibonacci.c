@@ -1,41 +1,60 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
- * print_fibonacci - Print the first n Fibonacci numbers.
- * @n: The number of Fibonacci numbers to print.
- *
- * This function prints the first n Fibonacci numbers,
- * starting with 1 and 2, separated by comma and space.
+ * print_char - Writes a character to stdout
+ * @c: The character to print
  */
-void print_fibonacci(int n)
+void print_char(char c)
 {
-	int i;
-	unsigned int fib1 = 1, fib2 = 2, next;
-
-	printf("%u, %u, ", fib1, fib2);
-
-	for (i = 3; i <= n; i++)
-	{
-		next = fib1 + fib2;
-		if (i != n)
-			printf("%u, ", next);
-		else
-			printf("%u", next);
-
-		fib1 = fib2;
-		fib2 = next;
-	}
-
-	printf("\n");
+	write(1, &c, 1);
 }
 
 /**
- * main - Entry point of the program.
- *
- * Return: Always 0 (success).
+ * print_number - Prints an integer
+ * @n: The integer to print
  */
-int main(void)
+void print_number(int n)
 {
-	print_fibonacci(98);
-	return (0);
+	if (n / 10)
+		print_number(n / 10);
+	print_char(n % 10 + '0');
+}
+
+/**
+ * add_numbers - Adds two numbers together and returns the result
+ * @a: The first number
+ * @b: The second number
+ * Return: The sum of a and b
+ */
+int add_numbers(int a, int b)
+{
+	return (a + b);
+}
+
+/**
+ * fibonacci - Prints the first 98 Fibonacci numbers
+ */
+void fibonacci(void)
+{
+	int i, n1, n2, sum;
+
+	n1 = 1;
+	n2 = 2;
+
+	print_number(n1);
+	print_char(',');
+	print_char(' ');
+	print_number(n2);
+
+	for (i = 3; i <= 98; i++)
+	{
+		sum = add_numbers(n1, n2);
+		print_char(',');
+		print_char(' ');
+		print_number(sum);
+		n1 = n2;
+		n2 = sum;
+	}
+
+	print_char('\n');
 }
