@@ -5,15 +5,15 @@
  */
 void print_fibonacci(void)
 {
-	unsigned long long int first = 1, second = 2, next;
+	unsigned int first = 1, second = 2, next;
 	int i;
 
 	for (i = 0; i < 50; i++)
 	{
 		if (i < 49)
-			printf("%llu, ", first);
+			printf("%u, ", first);
 		else
-			printf("%llu\n", first);
+			printf("%u\n", first);
 
 		next = first + second;
 		first = second;
