@@ -22,7 +22,7 @@ char *generate_password(void)
 
     srand(time(NULL));
 
-    int i;
+    int i; // Move declaration here
     for (i = 0; i < password_length; i++)
     {
         int random_index = rand() % charset_length;
@@ -32,15 +32,4 @@ char *generate_password(void)
     password[password_length] = '\0'; /* Null-terminate the string */
 
     return password;
-}
-
-int main(void)
-{
-    char *password = generate_password();
-
-    printf("%s\n", password);
-
-    free(password); /* Remember to free allocated memory */
-
-    return 0;
 }
