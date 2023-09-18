@@ -17,7 +17,7 @@ void puts_half(char *str)
 	if (length % 2 == 0)
 		start = length / 2;
 	else
-		start = (length - 1) / 2;
+		start = (length + 1) / 2;
 
 	/* Print the second half of the string */
 	for (i = start; i < length; i++)
