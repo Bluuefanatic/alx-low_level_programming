@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 char *generate_password(void)
 {
     char *charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -13,8 +15,7 @@ char *generate_password(void)
 
     srand(time(NULL));
 
-    int i; // Move declaration here
-    for (i = 0; i < password_length; i++)
+    for (int i = 0; i < password_length; i++)
     {
         int random_index = rand() % charset_length;
         password[i] = charset[random_index];
