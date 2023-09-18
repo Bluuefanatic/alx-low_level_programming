@@ -1,21 +1,24 @@
 #include "main.h"
 
 /**
- * main - Test function to print an array.
- *
- * Return: Always 0.
+ * print_array - Prints n elements of an array of integers.
+ * @a: Pointer to the array.
+ * @n: Number of elements to print.
  */
-int main(void)
+void print_array(int *a, int n)
 {
-	int array[5];
+	int i;
 
-	array[0] = 98;
-	array[1] = 402;
-	array[2] = -198;
-	array[3] = 298;
-	array[4] = -1024;
+	for (i = 0; i < n; i++)
+	{
+		_putchar('0' + a[i]);
 
-	print_array(array, 5);
+		if (i < n - 1)
+		{
+			_putchar(',');
+			_putchar(' ');
+		}
+	}
 
-	return (0);
+	_putchar('\n');
 }
