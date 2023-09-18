@@ -27,7 +27,10 @@ int _atoi(char *s)
 		/* Check for overflow */
 		if (result > (INT_MAX - (s[i] - '0')) / 10)
 		{
-			return (sign == 1 ? INT_MAX : INT_MIN);
+			if (sign == 1)
+				return (INT_MAX);
+			else
+				return (INT_MIN);
 		}
 
 		result = result * 10 + (s[i] - '0');
