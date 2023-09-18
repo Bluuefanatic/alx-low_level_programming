@@ -22,3 +22,16 @@ void print_array(int *a, int n)
 
 	_putchar('\n');
 }
+
+/**
+ * main - Test function to print an array.
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+	int array[5] = { -198, 298, 402, -1024, 98 };
+	print_array(array, 5);
+	return (0);
+}
+
