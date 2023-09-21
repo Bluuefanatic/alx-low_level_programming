@@ -1,47 +1,34 @@
-#include "main.h"
-#include <unistd.h>
+#include <stdio.h>
 
-/**
- * print_buffer - prints the content of a buffer
- * @b: pointer to the buffer
- * @size: size of the buffer
- *
- * Return: void
- */
-void print_buffer(char *b, int size)
-{
-	int i, j;
-	char *line = b;
+void print_buffer(char *b, int size) {
+    int i, j;
 
-	if (size <= 0)
-	{
-		write(1, "\n", 1);
-		return;
-	}
+    if (size <= 0) {
+        printf("\n");
+        return;
+    }
 
-	for (i = 0; i < size; i += 10)
-	{
-		printf("%08x: ", i);
+    for (i = 0; i < size; i += 10) {
+        printf("%08x: ", i);
 
-		for (j = 0; j < 10; j++)
-		{
-			if (i + j < size)
-				printf("%02x%02x ", (line[i + j] >> 4) & 0xF, line[i + j] & 0xF);
-			else
-				printf("   ");
-		}
+        for (j = 0; j < 10; j++) {
+            if (i + j < size) {
+                printf("%02x%02x ", (unsigned char)b[i + j], (unsigned char)b[i + j]);
+            } else {
+                printf("     ");
+            }
+        }
 
-		for (j = 0; j < 10; j++)
-		{
-			if (i + j < size)
-			{
-				if (line[i + j] >= 32 && line[i + j] <= 126)
-					printf("%c", line[i + j]);
-				else
-					printf(".");
-			}
-		}
+        for (j = 0; j < 10; j++) {
+            if (i + j < size) {
+                if (b[i + j] >= 32 && b[i + j] <= 126) {
+                    printf("%c", b[i + j]);
+                } else {
+                    printf(".");
+                }
+            }
+        }
 
-		printf("\n");
-	}
+        printf("\n");
+    }
 }
