@@ -6,32 +6,23 @@
  */
 char *cap_string(char *str)
 {
-	char *ptr = str;
-	int capitalize = 1;
+	int i;
 
-	while (*ptr != '\0')
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (*ptr >= 'a' && *ptr <= 'z')
+		if (i == 0 || str[i - 1] == ' ' || str[i - 1] == '\t' ||
+		    str[i - 1] == '\n' || str[i - 1] == ',' ||
+		    str[i - 1] == ';' || str[i - 1] == '.' ||
+		    str[i - 1] == '!' || str[i - 1] == '?' ||
+		    str[i - 1] == '"' || str[i - 1] == '(' ||
+		    str[i - 1] == ')' || str[i - 1] == '{' ||
+		    str[i - 1] == '}')
 		{
-			if (capitalize)
+			if (str[i] >= 'a' && str[i] <= 'z')
 			{
-				*ptr -= 32; /* Convert to uppercase */
-				capitalize = 0;
+				str[i] -= 32;
 			}
 		}
-		else
-		{
-			if (*ptr == ' ' || *ptr == '\t' || *ptr == '\n'
-				|| *ptr == ',' || *ptr == ';' || *ptr == '.'
-				|| *ptr == '!' || *ptr == '?' || *ptr == '"'
-				|| *ptr == '(' || *ptr == ')' || *ptr == '{'
-				|| *ptr == '}')
-			{
-				capitalize = 1;
-			}
-		}
-
-		ptr++;
 	}
 
 	return (str);
