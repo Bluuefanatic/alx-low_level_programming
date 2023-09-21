@@ -2,10 +2,6 @@
 
 /*
  * This program demonstrates a specific coding challenge.
- *
- * It initializes variables, performs operations on them, and prints the result
- *
- * @return The exit status of the program.
  */
 int main(void)
 {
