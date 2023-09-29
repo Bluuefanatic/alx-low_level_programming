@@ -28,7 +28,6 @@ int is_palindrome_recursive(char *s, int start, int end)
 int is_palindrome(char *s)
 {
 	int length = 0;
-	int i;
 
 	while (s[length] != '\0')
 		length++;
