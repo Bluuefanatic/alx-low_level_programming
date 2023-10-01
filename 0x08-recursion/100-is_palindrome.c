@@ -27,13 +27,10 @@ int is_palindrome_recursive(char *s, int start, int end)
  */
 int is_palindrome(char *s)
 {
-    if (*s == '\0')
-        return 1;
-
     int len = 0;
-    while (s[len] != '\0') {
+
+    while (s[len] != '\0')
         len++;
-    }
 
     return is_palindrome_recursive(s, 0, len - 1);
 }
