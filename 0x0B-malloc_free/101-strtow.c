@@ -2,18 +2,19 @@
 #include <stdlib.h>
 
 /**
- * Checks if a character is a space.
- * @param c The character to check.
- * @return 1 if it's a space, otherwise 0.
+ * is_space - Checks if a character is a space.
+ * @c: The character to check.
+ * Return: 1 if it's a space, otherwise 0.
  */
 int is_space(char c)
 {
-	return (c == ' ' || c == '\t' || c == '\n');
+	return c == ' ' || c == '\t' || c == '\n';
 }
+
 /**
- * Counts the number of words in a string.
- * @param str The input string.
- * @return The number of words.
+ * count_words - Counts the number of words in a string.
+ * @str: The input string.
+ * Return: The number of words.
  */
 int count_words(char *str)
 {
@@ -37,9 +38,9 @@ int count_words(char *str)
 }
 
 /**
- * Splits a string into an array of words.
- * @param str The input string.
- * @return An array of words. The last element is NULL.
+ * strtow - Splits a string into an array of words.
+ * @str: The input string.
+ * Return: An array of words. The last element is NULL.
  */
 char **strtow(char *str)
 {
