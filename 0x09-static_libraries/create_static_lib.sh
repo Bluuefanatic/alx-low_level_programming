@@ -1,10 +1,4 @@
 #!/bin/bash
-
-# Compile all .c files into .o files
-gcc -c *.c
-
-# Create the static library
-ar rcs liball.a *.o
-
-# Clean up the .o files
-rm *.o
+gcc -Wall -pedantic -Werror -Wextra -std=gnu89 -c *.c
+ar -rc liball.a *.o
+ranlib liball.a
