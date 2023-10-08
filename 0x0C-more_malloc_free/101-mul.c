@@ -2,83 +2,79 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/**
- * _isdigit - Checks if a character is a digit
- * @c: Character to check
- *
- * Return: 1 if c is a digit, 0 otherwise
- */
-int _isdigit(char c)
+int is_valid_number(char *str);
+int _strlen(char *s);
+void multiply(char *num1, char *num2);
+
+int main(int argc, char *argv[])
 {
-    return (c >= '0' && c <= '9');
-}
+    int len1, len2, len, i, j;
+    int *result;
 
-/**
- * multiply - Multiplies two positive numbers represented as strings
- * @num1: First number
- * @num2: Second number
- *
- * Return: Pointer to the result of the multiplication
- */
-char *multiply(char *num1, char *num2)
-{
-    int len1 = 0, len2 = 0, i, j, carry = 0, product;
-    char *result, *temp_result;
+    if (argc != 3 || !is_valid_number(argv[1]) || !is_valid_number(argv[2]))
+    {
+        printf("Error\n");
+        return 98;
+    }
 
-    while (num1[len1])
-        len1++;
-    while (num2[len2])
-        len2++;
+    len1 = _strlen(argv[1]);
+    len2 = _strlen(argv[2]);
+    len = len1 + len2;
+    
+    result = calloc(len, sizeof(int));
 
-    result = malloc(sizeof(char) * (len1 + len2 + 1));
-    if (result == NULL)
+    if (!result)
     {
         printf("Error\n");
         exit(98);
     }
-
-    for (i = len1 + len2 - 1; i >= 0; i--)
-        result[i] = '0';
 
     for (i = len1 - 1; i >= 0; i--)
     {
-        carry = 0;
         for (j = len2 - 1; j >= 0; j--)
         {
-            product = (num1[i] - '0') * (num2[j] - '0') + (result[i + j + 1] - '0') + carry;
-            carry = product / 10;
-            result[i + j + 1] = (product % 10) + '0';
+            int product = (argv[1][i] - '0') * (argv[2][j] - '0');
+            int sum = product + result[i + j + 1];
+            result[i + j + 1] = sum % 10;
+            result[i + j] += sum / 10;
         }
-        result[i + j + 1] = carry + '0';
     }
 
-    temp_result = result;
-    while (*temp_result == '0')
-        temp_result++;
-
-    return temp_result;
-}
-
-/**
- * main - Entry point
- * @argc: Argument count
- * @argv: Argument vector
- *
- * Return: Always 0 (Success)
- */
-int main(int argc, char *argv[])
-{
-    char *result;
-
-    if (argc != 3 || !(_isdigit(*argv[1]) && _isdigit(*argv[2])))
+    i = 0;
+    while (i < len - 1 && result[i] == 0)
     {
-        printf("Error\n");
-        exit(98);
+        i++;
     }
 
-    result = multiply(argv[1], argv[2]);
-    printf("%s\n", result);
+    for (; i < len; i++)
+    {
+        printf("%d", result[i]);
+    }
+    printf("\n");
+
     free(result);
 
     return 0;
+}
+
+int is_valid_number(char *str)
+{
+    while (*str)
+    {
+        if (*str < '0' || *str > '9')
+            return 0;
+        str++;
+    }
+    return 1;
+}
+
+int _strlen(char *s)
+{
+    int len = 0;
+    while (*s)
+    {
+        len++;
+        s++;
+    }
+    return len;
 }
