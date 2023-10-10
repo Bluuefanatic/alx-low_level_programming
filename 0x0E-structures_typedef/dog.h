@@ -30,7 +30,7 @@ void init_dog(struct dog *d, char *name, float age, char *owner);
  * print_dog - Prints the information of a dog
  * @d: Pointer to the struct dog
  *
- * Description: If an element of d is NULL, print (nil) instead of this element.
+ * Description: If an element of d is NULL, print (nil) instead of this element
  * (if name is NULL, print Name: (nil)). If d is NULL print nothing.
  */
 void print_dog(struct dog *d);
