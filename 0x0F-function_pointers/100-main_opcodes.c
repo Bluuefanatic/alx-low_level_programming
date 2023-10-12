@@ -6,7 +6,7 @@
  * @argc: Number of command-line arguments
  * @argv: Array of command-line arguments
  *
- * Return: 0 on success, 1 if incorrect number of arguments, 2 if negative bytes
+ * Return: 0 on success, 1 if incorrect number of arguments, 2 if negative byte
  */
 int main(int argc, char *argv[])
 {
