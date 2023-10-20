@@ -1,19 +1,22 @@
 #include <stdio.h>
 
-void before_main_message(void)
-{
-	printf("You're beat! and yet, you must allow,\nI bore my house upon my back!\n");
-}
+void before_main(void);
 
+/**
+ * main - Entry point
+ *
+ * Return: Always 0
+ */
 int main(void)
 {
-	int num1 = 5;
-       	int num2 = 7;
-       	int sum = num1 + num2;
-
-	before_main_message();
-
-	printf("The sum of %d and %d is %d\n", num1, num2, sum);
-
+	before_main();
 	return (0);
+}
+
+/**
+ * before_main - Prints a message before main
+ */
+void before_main(void)
+{
+	printf("You're beat! and yet, you must allow,\nI bore my house upon my back!\n");
 }
