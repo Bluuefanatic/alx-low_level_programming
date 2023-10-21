@@ -3,17 +3,6 @@
 void before_main(void);
 
 /**
- * main - Entry point
- *
- * Return: Always 0
- */
-int main(void)
-{
-	before_main();
-	return (0);
-}
-
-/**
  * before_main - Prints a message before main
  */
 void before_main(void)
