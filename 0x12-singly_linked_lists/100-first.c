@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-void before_main(void);
-
 /**
  * before_main - Prints a message before main
  */
