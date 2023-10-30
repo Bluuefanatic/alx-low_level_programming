@@ -5,31 +5,27 @@
 
 #define BUFSIZE 1024
 
-/*
- * Function: print_error_and_exit
- * Prints an error message and exits the program.
+/**
+ * print_error_and_exit - Prints an error message and exits the program.
  *
- * Parameters:
- * exit_code - The exit code to be used when exiting
- * message   - The error message to be printed
- * file_name - The name of the file associated with the error
- * fd        - The file descriptor (if applicable) associated with the error
-*/
-/* Function to print an error message and exit the program */
+ * @exit_code: The exit code to be used when exiting.
+ * @message: The error message to be printed.
+ * @file_name: The name of the file associated with the error.
+ * @fd: The file descriptor (if applicable) associated with the error.
+ *
+ * Return: None
+ */
 void print_error_and_exit(int exit_code, const char *message,
 		const char *file_name, int fd);
 
 /**
- * Function: main
- * Entry point of the program.
+ * main - Entry point of the program.
  *
- * Parameters:
- * argc - The number of command-line arguments
- * argv - An array of strings containing the command-line arguments
+ * @argc: The number of command-line arguments.
+ * @argv: An array of strings containing the command-line arguments.
  *
- * Returns:
- * Returns 0 on successful execution, or a non-zero value on error.
-*/
+ * Return: Returns 0 on successful execution, or a non-zero value on error.
+ */
 int main(int argc, char *argv[])
 {
 	int fd_from, fd_to;
@@ -74,7 +70,7 @@ int main(int argc, char *argv[])
 	if (bytes_read == -1)
 	{
 		print_error_and_exit(98, "Error: Can't read from file %s\n",
-				argv[1], fd_from);
+							 argv[1], fd_from);
 	}
 
 	/* Close file descriptors */
@@ -87,19 +83,18 @@ int main(int argc, char *argv[])
 	return (0);
 }
 
-/*
- * Function: print_error_and_exit
- * Prints an error message and exits the program.
+/**
+ * print_error_and_exit - Prints an error message and exits the program.
  *
- * Parameters:
- * exit_code - The exit code to be used when exiting
- * message   - The error message to be printed
- * file_name - The name of the file associated with the error
- * fd        - The file descriptor (if applicable) associated with the error
-*/
-/* Function to print an error message and exit the program */
+ * @exit_code: The exit code to be used when exiting
+ * @message: The error message to be printed
+ * @file_name: The name of the file associated with the error
+ * @fd: The file descriptor (if applicable) associated with the error
+ *
+ * Return: None
+ */
 void print_error_and_exit(int exit_code, const char *message,
-		const char *file_name, int fd)
+						  const char *file_name, int fd)
 {
 	dprintf(STDERR_FILENO, message, file_name);
 	if (fd != -1)
