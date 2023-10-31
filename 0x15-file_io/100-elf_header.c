@@ -104,5 +104,5 @@ void print_elf_header_info(Elf64_Ehdr *header)
 	printf("  ABI Version:  %d\n", header->e_ident[EI_ABIVERSION]);
 	printf("  Type:  %s\n",
 	       header->e_type == ET_EXEC ? "EXEC (Executable file)" : "Other");
-	printf("  Entry point address:  %#lx\n", (unsigned long)header->e_entry & 0xFFFFFFFFUL);
+	printf("  Entry point address:  %#lx\n", (unsigned int)header->e_entry);
 }
