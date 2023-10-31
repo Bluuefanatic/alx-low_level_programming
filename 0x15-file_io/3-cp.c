@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
 	/* Close file descriptors */
 	if (close(fd_from) == -1 || close(fd_to) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd\n");
+		dprintf(STDERR_FILENO, "Error: Can't close fd \n");
 		exit(100);
 	}
 
