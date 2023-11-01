@@ -279,7 +279,7 @@ int main(int argc, char *argv[])
 
 	if (o == -1)
 	{
-		perror("Error");
+		perror("Error opening file");
 		return (1);
 	}
 
@@ -310,16 +310,13 @@ int main(int argc, char *argv[])
 	print_version(header->e_ident);
 	print_osabi(header->e_ident);
 	print_abi(header->e_ident);
-	print_type(header->e_type, header->e_ident);
-	print_entry(header->e_entry, header->e_ident);
+	print_type(header->e_type,
+			header->e_ident);
+	print_entry(header->e_entry,
+			header->e_ident);
 
 	free(header);
 	close_elf(o);
 
 	return (0);
 }
-
-/*
- * File: 100-elf_header.c
- * Auth: joel iziren
- */
