@@ -267,15 +267,19 @@ void close_elf(int elf)
  */
 int main(int argc, char *argv[])
 {
-	Elf64_Ehdr *header;
+	if (argc !=2)
+	{
+		fprintf(stderr, "Usage: %s <elf_filename>\n", argv[0]);
+		return (1);
+	}
 
-	int o = open(argv[1], 0_RDONL);
-	int r = 0;
+	Elf64_Ehdr *header;
+	int o = open(argv[1], 0_RDONLY);
 
 	if(o == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: can't read file %s\n", argv[1]);
-		exit(98);
+		perror("Error");
+		return (1);
 	}
 	header = malloc(sizeof(Elf64_Ehdr));
 
