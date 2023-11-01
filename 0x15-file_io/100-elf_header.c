@@ -41,10 +41,10 @@ void check_elf(unsigned char *e_ident)
 }
 
 /**
- * print_class - prints class of an Elf header
+ * print_magic - prints magic of an Elf header
  * @e_ident: a pointer to an array that contains the Elf class
  */
-void print_class(unsigned char *e_ident)
+void print_magic(unsigned char *e_ident)
 {
 	int index;
 
@@ -65,7 +65,7 @@ void print_class(unsigned char *e_ident)
  * print_class - prints the class of Elf header
  * @e_ident: a pointer to an array that contains Elf class
  */
-void print_data(unsigned char *e_ident)
+void print_class(unsigned char *e_ident)
 {
 	printf("  Class:                         ");
 
@@ -268,8 +268,10 @@ void close_elf(int elf)
 int main(int argc, char *argv[])
 {
 	Elf64_Ehdr *header;
+	(void)argc;
 
-	int o = 0, r = 0;
+	int o = 0;
+	int r = 0;
 	o = open(argv[1], O_RDONLY);
 	if(o == -1)
 	{
@@ -299,18 +301,18 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-				check_elf(header->e_ident);
-				printf("ELF Header:\n");
-				print_magic(header->e_ident);
-				print_class(header->e_ident);
-				print_data(header->e_ident);
-				print_version(header->e_ident);
-				print_osabi(header->e_ident);
-				print_abi(header->e_ident);
-				print_type(header->e_type, header->e_ident);
-				print_entry(header->e_entry, header->e_ident);
+	check_elf(header->e_ident);
+	printf("ELF Header:\n");
+	print_magic(header->e_ident);
+	print_class(header->e_ident);
+	print_data(header->e_ident);
+	print_version(header->e_ident);
+	print_osabi(header->e_ident);
+	print_abi(header->e_ident);
+	print_type(header->e_type, header->e_ident);
+	print_entry(header->e_entry, header->e_ident);
 
-				free(header);
-				close_elf(o);
-				return(0);
+	free(header);
+	close_elf(o);
+	return(0);
 }
