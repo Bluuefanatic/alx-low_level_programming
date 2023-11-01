@@ -18,7 +18,7 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident);
 void close_elf(int elf);
 
 /**
- * Check_Elf - this will check if it is an Elf file
+ * check_elf - Checks if the provided file is an ELF file
  * @e_ident: a pointer to an array that contains Elf magic numbers
  *
  * Description: if it is not an Elf file - exit code 98
@@ -133,10 +133,10 @@ void print_version(unsigned char *e_ident)
  * print_abi - prints the ABI version of an ELF header
  * @e_ident: a pointer to an array containing the Elf ABI version
  */
-void print_abi (unsigned char *e_ident)
+void print_abi(unsigned char *e_ident)
 {
-        printf("   ABI Version:                 %d\n",
-                        e_ident[EI_ABIVERSION]);
+	printf("   ABI Version:                 %d\n",
+			e_ident[EI_ABIVERSION]);
 }
 
 /**
@@ -229,9 +229,9 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 	{
-		e_entry = ((e_entry << 8) & 0xFF00FF00)|
+		e_entry = ((e_entry << 8) & 0xFF00FF00) |
 			((e_entry >> 8) & 0xFF00FF);
-		e_entry = (e_entry << 16)|(e_entry >> 16);
+		e_entry = (e_entry << 16) | (e_entry >> 16);
 	}
 
 	if (e_ident[EI_CLASS] == ELFCLASS32)
@@ -271,13 +271,13 @@ int main(int argc, char *argv[])
 	ssize_t r;
 	Elf64_Ehdr *header;
 
-	if (argc !=2)
+	if (argc != = 2)
 	{
 		fprintf(stderr, "Usage: %s <elf_filename>\n", argv[0]);
 		return (1);
 	}
 
-	if(o == -1)
+	if (o == -1)
 	{
 		perror("Error");
 		return (1);
@@ -316,8 +316,9 @@ int main(int argc, char *argv[])
 	free(header);
 	close_elf(o);
 
-	return(0);
+	return (0);
 }
+
 /*
  * File: 100-elf_header.c
  * Auth: joel iziren
