@@ -44,7 +44,7 @@ void check_elf(unsigned char *e_ident)
  * print_class - prints class of an Elf header
  * @e_ident: a pointer to an array that contains the Elf class
  */
-void (unsigned char *e_ident)
+void print_class(unsigned char *e_ident)
 {
 	int index;
 
@@ -65,7 +65,7 @@ void (unsigned char *e_ident)
  * print_class - prints the class of Elf header
  * @e_ident: a pointer to an array that contains Elf class
  */
-void (unsigned char *e_ident)
+void print_data(unsigned char *e_ident)
 {
 	printf("  Class:                         ");
 
@@ -235,10 +235,10 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 	}
 
 	if (e_ident[EI_CLASS] == ELFCLASS32)
-		printf("%#x\n", unsigned int e_entry);
+		printf("%#lx\n", e_entry);
 
 	else
-		printf("%#lx", unsigned int  e_entry);
+		printf("%#lx", e_entry);
 }
 
 /**
@@ -265,40 +265,39 @@ void close_elf(int elf)
  *
  * Descripton: if the file is not an Elf file - exit code 98
  */
-int main(__attribute__((_unused_)) char *argv)
+int main(int argc, char *argv[])
 {
 	Elf64_Ehdr *header;
-	int o, r;
 
+	int o = 0, r = 0;
 	o = open(argv[1], O_RDONLY);
 	if(o == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: can't read file %s\n", argv[1]);
 		exit(98);
 	}
-	header = malloc(sixeof(Elf64_Ehdr));
+	header = malloc(sizeof(Elf64_Ehdr));
 	if (header == NULL)
 	{
 		close_elf(o);
-		dprintf(STDERR_FILENO, "Error: can't read file %s\n", argv[1];
-				exit(98);
-				}
-				header = malloc(sizeof(Elf64_Ehdr));
-				if (header == NULL)
-				{
-				close_elf(o);
-				dprintf(STDERR_FILENO, "Error: can't read file %s\n", arv[1];
-						exit(98);
-						}
-						r = read(0, header, size of(Elf64_Ehdr));
-				if(r == -1)
-				{
-				free(header);
-				close_elf(o);
-				dprintf(STDERR_FILENO, "Error: '%s': no such file\n":,
-						argv[1]);
-				exit(98);
-				}
+		dprintf(STDERR_FILENO, "Error: can't read file %s\n", argv[1]);
+		exit(98);
+	}
+	header = malloc(sizeof(Elf64_Ehdr));
+	if (header == NULL)
+	{
+		close_elf(o);
+		dprintf(STDERR_FILENO, "Error: can't read file %s\n", argv[1]);
+		exit(98);
+	}
+	r = read(0, header, sizeof(Elf64_Ehdr));
+	if(r == -1)
+	{
+		free(header);
+		close_elf(o);
+		dprintf(STDERR_FILENO, "Error: '%s': no such file\n", argv[1]);
+		exit(98);
+	}
 
 				check_elf(header->e_ident);
 				printf("ELF Header:\n");
