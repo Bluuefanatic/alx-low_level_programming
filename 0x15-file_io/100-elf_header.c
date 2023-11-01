@@ -11,8 +11,8 @@ void print_magic(unsigned char *e_ident);
 void print_class(unsigned char *e_ident);
 void print_data(unsigned char *e_ident);
 void print_version(unsigned char *e_ident);
-void print_osabi(unsigned char *e_ident);
 void print_abi(unsigned char *e_ident);
+void print_osabi(unsigned char *e_ident);
 void print_type(unsigned int e_type, unsigned char *e_ident);
 void print_entry(unsigned long int e_entry, unsigned char *e_ident);
 void close_elf(int elf);
@@ -102,7 +102,7 @@ void print_data(unsigned char *e_ident)
 			printf("2's complement, little endian\n");
 			break;
 		case ELFDATA2MSB:
-			printf("2's cpmplement, big endian\n");
+			printf("2's complement, big endian\n");
 			break;
 		default:
 			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
@@ -251,7 +251,7 @@ void close_elf(int elf)
 {
 	if (close(elf) == -1)
 	{
-		dprintf(STDERR_FILENO,       "Error: cannot close fd %d/n", elf);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", elf);
 		exit(98);
 	}
 }
@@ -288,7 +288,7 @@ int main(int argc, char *argv[])
 	if (header == NULL)
 	{
 		close_elf(o);
-		dprintf(STDERR_FILENO, "Error: can't read file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: can't allocate memory for header\n");
 		exit(98);
 	}
 
@@ -318,3 +318,7 @@ int main(int argc, char *argv[])
 
 	return(0);
 }
+/*
+ * File: 100-elf_header.c
+ * Auth: joel iziren
+ */
