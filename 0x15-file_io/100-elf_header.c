@@ -267,20 +267,22 @@ void close_elf(int elf)
  */
 int main(int argc, char *argv[])
 {
+	int o = open(argv[1], O_RDONLY);
+	ssize_t r;
+	Elf64_Ehdr *header;
+
 	if (argc !=2)
 	{
 		fprintf(stderr, "Usage: %s <elf_filename>\n", argv[0]);
 		return (1);
 	}
 
-	Elf64_Ehdr *header;
-	int o = open(argv[1], 0_RDONLY);
-
 	if(o == -1)
 	{
 		perror("Error");
 		return (1);
 	}
+
 	header = malloc(sizeof(Elf64_Ehdr));
 
 	if (header == NULL)
@@ -313,5 +315,6 @@ int main(int argc, char *argv[])
 
 	free(header);
 	close_elf(o);
+
 	return(0);
 }
