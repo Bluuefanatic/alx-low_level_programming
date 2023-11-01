@@ -225,7 +225,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
  */
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
-	printf("Entry point adress:            ");
+	printf("Entry point address:            0x%lx\n", e_entry);
 
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 	{
@@ -271,7 +271,7 @@ int main(int argc, char *argv[])
 	ssize_t r;
 	Elf64_Ehdr *header;
 
-	if (argc != = 2)
+	if (argc != 2)
 	{
 		fprintf(stderr, "Usage: %s <elf_filename>\n", argv[0]);
 		return (1);
