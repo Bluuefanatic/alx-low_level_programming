@@ -121,12 +121,22 @@ void print_version(unsigned char *e_ident)
 	switch (e_ident[EI_VERSION])
 	{
 		case EV_CURRENT:
-			printf(" (current)\n");
+			printf(" (1\n");
 			break;
 		default:
 			printf("\n");
 			break;
 	}
+}
+
+/**
+ * print_abi - prints the ABI version of an ELF header
+ * @e_ident: a pointer to an array containing the Elf ABI version
+ */
+void print_abi (unsigned char *e_ident)
+{
+        printf("   ABI Version:                 %d\n",
+                        e_ident[EI_ABIVERSION]);
 }
 
 /**
@@ -140,7 +150,7 @@ void print_osabi(unsigned char *e_ident)
 	switch (e_ident[EI_OSABI])
 	{
 		case ELFOSABI_NONE:
-			printf("UNIX - System V\n");
+			printf("Unknown\n");
 			break;
 		case ELFOSABI_HPUX:
 			printf("UNIX - HP-UX\n");
@@ -172,16 +182,6 @@ void print_osabi(unsigned char *e_ident)
 		default:
 			printf("<unknown: %x>\n", e_ident[EI_OSABI]);
 	}
-}
-
-/**
- * print_abi - prints the ABI version of an ELF header
- * @e_ident: a pointer to an array containing the Elf ABI version
- */
-void print_abi (unsigned char *e_ident)
-{
-	printf("   ABI Version:                 %d\n",
-			e_ident[EI_ABIVERSION]);
 }
 
 /**
@@ -238,7 +238,7 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 		printf("%#lx\n", e_entry);
 
 	else
-		printf("%#lx", e_entry);
+		printf("%#lx\n", e_entry);
 }
 
 /**
