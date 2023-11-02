@@ -1,7 +1,7 @@
 /*
  * File: 100-elf_header.c
- * * Auth: Joel Iziren
- * */
+ * Auth: Jole Iziren
+ */
 
 #include <elf.h>
 #include <sys/types.h>
