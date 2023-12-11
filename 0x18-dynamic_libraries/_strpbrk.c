@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stddef.h>
+#include <string.h>
 
 /**
  * _strpbrk - Locates the first occurrence in s of any of the bytes in accept
@@ -13,7 +15,7 @@ char *_strpbrk(char *s, char *accept)
 	{
 		if (strchr(accept, *s))
 			return (s);
-		s++
+		s++;
 	}
 
 	return (NULL);

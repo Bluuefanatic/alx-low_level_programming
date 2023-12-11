@@ -1,4 +1,5 @@
 #include "main.h"
+#include <string.h>
 
 /**
  * _strspn - Calculates the length of the initial segment of s which consists
