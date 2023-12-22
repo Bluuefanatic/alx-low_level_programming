@@ -6,7 +6,7 @@
 /**
  * main - check the code for
  *
- * Return: AlwaYs EXIT_SUCCESS.
+ * Return: Always EXIT_SUCCESS.
  */
 int main(void)
 {
